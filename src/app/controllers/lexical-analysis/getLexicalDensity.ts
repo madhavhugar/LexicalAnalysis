@@ -8,8 +8,8 @@ function getLexicalDensity(text: string): number {
   const MAX_WORD_LIMIT = 100;
   try {
     const invalidInputError = new TypeError(
-      `Provide text with word limit of ${MAX_WORD_LIMIT}\
-       and characted limit of ${MAX_CHARACTER_LIMIT}`,
+      `Provide text with word limit of ${MAX_WORD_LIMIT} ` +
+      `and characted limit of ${MAX_CHARACTER_LIMIT}`,
       );
     if (text.length > MAX_CHARACTER_LIMIT) throw invalidInputError;
 

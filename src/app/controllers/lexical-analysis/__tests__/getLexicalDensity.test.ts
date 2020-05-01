@@ -1,5 +1,6 @@
 import getLexicalDensity from '../getLexicalDensity';
-// import largeInputText from './__stubs__/largeInputText';
+import exceedCharacterInputText from './__stubs__/exceedCharacterInputText';
+import exceedWordInputText from './__stubs__/exceedWordInputText';
 
 describe('getLexicalDensity', () => {
   it('should compute lexical density', () => {
@@ -10,7 +11,9 @@ describe('getLexicalDensity', () => {
   });
 
   it('should throw type error when input text is invalid', () => {
-    // TODO: work on failing test case
-    // expect(getLexicalDensity(largeInputText)).toThrow(new TypeError('blah'));
+    expect(() => { getLexicalDensity(exceedCharacterInputText); })
+      .toThrow();
+    expect(() => { getLexicalDensity(exceedWordInputText); })
+      .toThrow();
   });
 });

@@ -10,5 +10,5 @@ const log = require('winston');
  */
 export function errorHandler(error: Error, req: Request, res: Response, next: NextFunction) {
     log.error(error.message, error);
-    res.status(500).send('Something failed');
+    res.status(500).send(error.message);
 }

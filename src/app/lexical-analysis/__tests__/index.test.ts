@@ -1,4 +1,4 @@
-import app, { server } from '../../../../server';
+import app, { server } from '../../../server';
 import request from 'supertest';
 
 describe('POST => /complexity', () => {

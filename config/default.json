@@ -1,6 +1,5 @@
 {
   "env": "Development",
   "viewsPath": "./dist/app/views",
-  "mongodbUrl": "mongodb://localhost/defaultDB",
-  "jwtPrivateKey": ""
+  "mongodbUrl": "mongodb://localhost/defaultDB"
 }

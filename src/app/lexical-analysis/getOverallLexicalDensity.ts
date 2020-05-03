@@ -1,7 +1,7 @@
 import getLexicalWordCount from './getLexicalWordCount';
 
-export default function getOverallLexicalDensity(words: string[]): number {
-  const lexicalWordCount = getLexicalWordCount(words);
+export default async function getOverallLexicalDensity(words: string[]): Promise<number> {
+  const lexicalWordCount = await getLexicalWordCount(words);
   const wordCount = words.length;
   const lexicalDensity = lexicalWordCount / wordCount;
 

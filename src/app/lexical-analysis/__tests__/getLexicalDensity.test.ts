@@ -1,24 +1,25 @@
-import getOverallLexicalDensityMock from '../getOverallLexicalDensity';
 import getLexicalDensity from '../getLexicalDensity';
 import exceedCharacterInputText from './__stubs__/exceedCharacterInputText';
 import exceedWordInputText from './__stubs__/exceedWordInputText';
 
+jest.mock('../../models/getNonLexicalWords');
+
 describe('getLexicalDensity', () => {
   beforeEach(() => jest.clearAllMocks());
 
-  it('should delegate non-verbose lexical density computation', () => {
+  it('should delegate non-verbose lexical density computation', async () => {
     const inputText = 'Kim loves going to  the cinema';
-    const got = getLexicalDensity({ inputText });
+    const got = await getLexicalDensity({ inputText });
     const wanted = {
       overallLexicalDensity: 0.67,
     };
     expect(got).toEqual(wanted);
   });
 
-  it('should delegate verbose lexical density computation', () => {
+  it('should delegate verbose lexical density computation', async () => {
     const inputText = 'Kim loves going. to  the. cinema';
     const verbose = true;
-    const got = getLexicalDensity({ inputText, verbose });
+    const got = await getLexicalDensity({ inputText, verbose });
     const wanted = {
       overallLexicalDensity: 0.67,
       sentenceLexicalDensity: [1, 0, 1],
@@ -26,10 +27,15 @@ describe('getLexicalDensity', () => {
     expect(got).toEqual(wanted);
   });
 
-  it('should throw type error when input text is invalid', () => {
-    expect(() => { getLexicalDensity({ inputText: exceedCharacterInputText }); })
+  it('should throw type error when input text character limit is exceeded', () => {
+    expect(getLexicalDensity({ inputText: exceedCharacterInputText }))
+      .rejects
       .toThrow();
-    expect(() => { getLexicalDensity({ inputText: exceedWordInputText }); })
+    });
+  it('should throw type error when input text word limit is exceeded', () => {
+    expect(getLexicalDensity({ inputText: exceedWordInputText }))
+      .rejects
       .toThrow();
+
   });
 });

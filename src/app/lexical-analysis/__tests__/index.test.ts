@@ -1,6 +1,8 @@
 import app, { server } from '../../../server';
 import request from 'supertest';
 
+jest.mock('../../models/getNonLexicalWords');
+
 describe('POST => /complexity', () => {
   afterEach(async () => {
     await server.close();

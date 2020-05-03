@@ -1,7 +1,7 @@
-import { getNonLexicalWordsFromLocal } from '../models/getNonLexicalWords';
+import { getNonLexicalWords } from '../models/getNonLexicalWords';
 
-export default function getLexicalWordCount(words: string[]): number {
-  const nonLexicalWords = getNonLexicalWordsFromLocal();
+export default async function getLexicalWordCount(words: string[]): Promise<number> {
+  const nonLexicalWords = await getNonLexicalWords();
   return words
     .filter(word => !nonLexicalWords.includes(word))
     .length;

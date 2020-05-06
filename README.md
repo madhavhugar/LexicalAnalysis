@@ -1,6 +1,15 @@
 ## Lexical Analysis
 
-Currently MongoDB connections and schema are defined, but the non-lexical words are fetched from a local file
+![Node.js CI](https://github.com/madhavhugar/LexicalAnalysis/workflows/Node.js%20CI/badge.svg?branch=master)
+
+Following APIs are exposed via the application:
+
+- GET `localhost:8888/` => for swagger documentation
+- POST `localhost:8888/complexity` => for lexical analysis APIs
+  - Return the lexical density of the inputted text. The input text should be provided via the request.
+    - query parameters (optional): `{ "mode": "verbose" }`
+    - body: `{ "input_text": "The lexical density of the text here will be computed" }`
+
 
 ### Local Setup
 

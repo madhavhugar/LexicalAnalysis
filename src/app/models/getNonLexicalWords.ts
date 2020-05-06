@@ -1,17 +1,11 @@
-import { NonLexicalWordModel, INonLexicalWord } from './NonLexicalWord';
+import { NonLexicalWordModel } from './NonLexicalWord';
 import nonLexicalWords from './nonLexicalWords';
 
-export function getNonLexicalWords(): Promise<string[]> {
+export function getNonLexicalWords(): Promise<String[]> {
   return NonLexicalWordModel
-    .find((err, res) => new Promise((resolve, reject) => {
-      if (err) {
-        return reject;
-      }
-      return resolve(res);
-    }))
-    .then((words: INonLexicalWord[]) => {
-      return words.map(word => (word.value));
-    });
+    .find()
+    .exec()
+    .then(words => words.map(word => (word.value)));
 }
 
 export function getNonLexicalWordsFromLocal(): string[] {
